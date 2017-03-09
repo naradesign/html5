@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 new elements</title>
+    <style>
+        *{ box-sizing: border-box; }
+        section{ margin: 3em 0; }
+        fieldset{ margin-bottom: 1em; }
+        legend{ font-weight: 700; }
+    </style>
+</head>
+<body>
+    <h1>HTML5 forms</h1>
+
+    <section>
+        <h2>datalist element</h2>
+        <form>
+            <fieldset>
+                <legend>input list="local-list" + datalist id="local-list"</legend>
+                <label for="local">지역번호:</label>
+                <input type="text" id="local" list="local-list">
+                <datalist id="local-list">
+                    <option value="02" label="서울"></option>
+                    <option value="031" label="경기"></option>
+                </datalist>
+            </fieldset>
+        </form>
+    </section>
+
+    <section>
+        <h2>output element</h2>
+        <form method="post" oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+            <fieldset>
+                <legend>form oninput="<strong>x</strong>.value=parseInt(<strong>a</strong>.value)+parseInt(<strong>b</strong>.value)"</legend>
+                <input type="range" name="a" value="50">
+                +
+                <input type="range" name="b" value="50">
+                =
+                <output name="x" for="a b" style="font-weight:bold">108</output>
+            </fieldset>
+        </form>
+        <form method="post" oninput="y.value=parseInt(c.value)+parseInt(d.value)">
+            <fieldset>
+                <legend>form oninput="<strong>y</strong>.value=parseInt(<strong>c</strong>.value)+parseInt(<strong>d</strong>.value)"</legend>
+                <input type="number" name="c" value="50">
+                +
+                <input type="number" name="d" value="50">
+                =
+                <output name="y" for="a b" style="font-weight:bold">100</output>
+            </fieldset>
+        </form>
+    </section>
+
+    <section>
+        <h2>progress element</h2>
+        <form>
+            <fieldset>
+                <legend>progress value="0.5"</legend>
+                <progress value="0.5">0.5/1</progress>
+                <br>
+                <progress value="50" max="100">50/100</progress>
+                <p>min 속성은 존재하지 않음. max 속성 생략시 기본 값은 1.</p>
+            </fieldset>
+        </form>
+    </section>
+
+    <section>
+        <h2>meter element</h2>
+        <form>
+            <fieldset>
+                <legend>meter value="0.5"</legend>
+                <meter value="0.5">0.5/1</meter>
+                <br>
+                <meter value="50" max="100">50/100</meter>
+                <p>min/max 속성 생략시 기본 값은 0/1이 된다. 'low, high, optimum' 속성을 사용하면 '낮은 범위, 높은 범위, 적정 값'을 명시할 수 있음.</p>
+            </fieldset>
+        </form>
+    </section>
+
+    <section>
+        <h2>input [type] attributes</h2>
+        <form>
+            <fieldset>
+                <legend>input type="search"</legend>
+                <label for="search">검색:</label>
+                <input type="search" id="search" autocomplete="on" required>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="tel"</legend>
+                <label for="tel">전화번호:</label>
+                <input type="tel" id="tel" required> - <input type="tel" id="tel" required> - <input type="tel" id="tel" required>
+                <p>전화번호를 입력해 주세요. 예) 010-3405-9380</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="url"</legend>
+                <label for="url">웹 사이트:</label>
+                <input type="url" id="url" required placeholder="http://"> <span></span>
+                <p>웹 사이트 주소를 입력해 주세요. 예) http://naradesign.net/</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="email"</legend>
+                <label for="email">이메일:</label>
+                <input type="email" id="email" required placeholder="abc@xyz.com"> <span></span>
+                <p>이메일 주소를 입력해 주세요. 예) email@email.com</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="number"</legend>
+                <label for="number">번호:</label>
+                <input type="number" id="number" required> <span></span>
+                <p>번호(정수)를 입력해 주세요. 예) 0123456789, -0123456789</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="date"</legend>
+                <label for="date">날짜:</label>
+                <input type="date" id="date" required placeholder="YYYY-MM-DD"> <span></span>
+                <p>날짜를 규격에 맞게 입력해 주세요. 예) 2010-12-24</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="time"</legend>
+                <label for="time">시간:</label>
+                <input type="time" id="time" required placeholder="HH:MM"> <span></span>
+                <p>시간을 규격에 맞게 입력해 주세요. 예) 00:00</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="range"</legend>
+                <label for="range">수준:</label>
+                <input type="range" step="10" id="range" required> <span></span>
+                <p>수준을 입력해 주세요. 예) 0 ~ 100</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="color"</legend>
+                <label for="color">색상:</label>
+                <input type="color" id="color" required> <span></span>
+                <p>색상을 입력해 주세요. 예) #FF0000, #ff0000, RED, red</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="file" accept="image/*"</legend>
+                <label for="file-2">이미지 1:</label>
+                <input type="file" id="file-2" multiple required accept="image/*"> <span></span>
+                <p>하나 이상의 이미지 파일을 첨부해 주세요.</p>
+            </fieldset>
+        </form>
+    </section>
+
+    <section>
+        <h2>input attributes</h2>
+        <form>
+            <fieldset>
+                <legend>input required</legend>
+                <label for="required">이메일:</label>
+                <input id="required" type="email" required placeholder="abc@xyz.com"> <span></span>
+                <p>이메일 주소는 반드시 입력해야 합니다.</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input autocomplete="on"</legend>
+                <label for="autocompleteOn">자동완성 켬:</label>
+                <input type="text" id="autocompleteOn" autocomplete="on">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input autocomplete="off"</legend>
+                <label for="autocompleteOn">자동완성 끔:</label>
+                <input type="text" id="autocompleteOff" autocomplete="off">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input autofocus="autofocus"</legend>
+                <label for="autofocus">자동 포커스:</label>
+                <input type="text" id="autofocus" autofocus>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input placeholder="abc@abc.com"</legend>
+                <label for="placeholder">이메일:</label>
+                <input type="text" id="placeholder" placeholder="abc@abc.com" required>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input list="local-list" + datalist id="local-list"</legend>
+                <label for="local">지역번호:</label>
+                <input type="text" id="local" list="local-list">
+                <datalist id="local-list">
+                    <option value="02" label="서울"></option>
+                    <option value="031" label="경기"></option>
+                </datalist>
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input min="0" max="10"</legend>
+                <label for="minmax">숫자(최소/최대) 값:</label>
+                <input type="number" id="minmax" min="0" max="10" placeholder="min=0" required> <span></span>
+                <p>숫자 최솟값은 '0' 이상, 최댓값은 '10' 이하여야 합니다.</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input minlength="4" maxlength="8"</legend>
+                <label for="minmaxlength">문자(최소/최대) 길이:</label>
+                <input type="text" id="minmaxlength" minlength="4" maxlength="8" required> <span></span>
+                <p>문자 길이 최솟값은 '4' 이상, 최댓값은 '8' 이하여야 합니다.</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input step="10"</legend>
+                <label for="level">레벨:</label>
+                <input name id="level" value type="number" min="0" max="100" step="10" required> <span></span>
+                <p>0~100 가운데 10 단위로만 입력하세요.</p>
+                <input name type="submit">
+        </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="email" multiple</legend>
+                <label for="multiple">여러 개 이메일 주소:</label>
+                <input name type="email" id="multiple" value multiple required placeholder="abc@xyz.com"> <span></span>
+                <p>콤마 ','로 분리하여 여러 개의 이메일 주소를 입력할 수 있습니다.</p>
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input type="file" multiple</legend>
+                <label for="multiple_file">여러 개 파일 첨부:</label>
+                <input name type="file" id="multiple_file" value multiple required> <span></span>
+                <p>여러 개의 파일을 첨부할 수 있습니다.</p>
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>select multiple</legend>
+                <label for="multiple_select">여러 개의 값:</label>
+                <select multiple="" id="multiple_select">
+                    <option value="01@01.com">01</option>
+                    <option value="02@02.com">02</option>
+                    <option value="03@03.com">03</option>
+                </select>
+                <p>여러 개의 값을 선택할 수 있습니다.</p>
+            </fieldset>
+        </form>
+        <form>
+            <fieldset>
+                <legend>input pattern="[0-9][0-9][0-1][0-9][0-3][0-9]-[1-4][0-9][0-9][0-9][0-9][0-9][0-9]"</legend>
+                <label for="pattern">정규 표현식 패턴:</label>
+                <input id="pattern" maxlength="14" pattern="[0-9][0-9][0-1][0-9][0-3][0-9]-[1-4][0-9][0-9][0-9][0-9][0-9][0-9]" required="" title="하이픈 '-' 기호를 포함해야 합니다."> <span></span>
+                <p>가상의 주민등록번호를 입력 해보세요. 예) 000000-1000000</p>
+                <input type="submit">
+            </fieldset>
+        </form>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 new elements</title>
+    <style>
+        *{ box-sizing: border-box; }
+        code{
+            background: yellow;
+            font-size: 24px;
+        }
+        section{ margin: 3em 0; }
+    </style>
+</head>
+<body>
+    <h1>HTML5 text level semantics</h1>
+    <section>
+        <h2>data element</h2>
+        <p>
+            <data value="dece24@gmail.com">정찬명</data><br>
+            <code>&lt;data value="dece24@gmail.com"&gt;정찬명&lt;/data&gt;</code><br>
+            <br>
+            <data value="ISBN:978-89-5460-326-3">정찬명의 HTML 완벽 가이드</data><br>
+            <code>&lt;data value="ISBN:978-89-5460-326-3"&gt;정찬명의 HTML 완벽 가이드&lt;/data&gt;</code>
+        </p>
+    </section>
+
+    <section>
+        <h2>time element</h2>
+        <time>2011-11-12T14:54:39Z</time><br>
+        <code>&lt;time&gt;2011-11-12T14:54:39Z&lt;/time&gt;</code> // T = time, Z = UTC <br><br>
+        <time datetime="2011-11-12T14:54:39Z">11월 12일(UTC)</time><br>
+        <code>&lt;time datetime="2011-11-12T14:54:39Z"&gt;11월 12일(UTC)&lt;/time&gt;</code><br><br>
+        <time>2011-11-12T14:54+09:00</time><br>
+        <code>&lt;time&gt;2011-11-12T14:54+09:00&lt;/time&gt;</code> // 9시간을 더하여 한국 시간으로 표시<br><br>
+        <time>4h 18m 3s</time><br>
+        <code>&lt;time&gt;4h 18m 3s&lt;/time&gt;</code> // 기간을 나타내는 형식<br><br>
+        <time datetime="4h 18m 3s">4시간 18분 3초</time><br>
+        <code>&lt;time datetime="4h 18m 3s"&gt;4시간 18분 3초&lt;/time&gt;</code>
+    </section>
+
+    <section>
+        <h2>mark element</h2>
+        <label for="search">검색:</label> <input type="search" id="search" value="html5"> <button>검색</button>
+        <p>2개의 검색 결과.</p>
+        <ol>
+            <li>시멘틱 마크업은 역시 정찬명의 <mark>html5</mark>...</li>
+            <li><mark>html5</mark>에 mark 요소가 있는 것 같던데요. 언제 쓰는거죠?</li>
+        </ol>
+    </section>
+
+    <section>
+        <h2>wbr element</h2>
+        <p>ThepoweroftheWebisinitsuniversality.Accessbyeveryoneregardlessofdisabilityisanessentialaspect.(wbr 요소 없는 문장)</p>
+        <p>The<wbr>power<wbr>of<wbr>the<wbr>Web<wbr>is<wbr>in<wbr>its<wbr>universality.<wbr>Access<wbr>by<wbr>everyone<wbr>regardless<wbr>of<wbr>disability<wbr>is<wbr>an<wbr>essential<wbr>aspect.(wbr 요소 있는 문장)</p>
+    </section>
+</body>
+</html>

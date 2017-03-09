@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 new elements</title>
+    <style>
+        *{ box-sizing: border-box; }
+        section{ margin: 3em 0; }
+        table, th, td{ border: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <h1>HTML5 scripting</h1>
+
+    <section>
+        <h2>template element</h2>
+        <table>
+            <caption>정찬명 주니어</caption>
+            <thead>
+                <tr>
+                    <th scope="row">이름</th>
+                    <th scope="row">성별</th>
+                    <th scope="row">나이</th>
+                </tr>
+            </thead>
+            <tbody>
+                <template id="row">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </template>
+            </tbody>
+        </table>
+        <script>
+            // Data is hard-coded here, but could come from the server
+            var member = [
+                { name: '정아람', gender: '남성', age: 13 },
+                { name: '정이든', gender: '남성', age: 9 }
+            ];
+            var template = document.querySelector('#row');
+            for ( var i = 0; i < member.length; i += 1 ) {
+                var cat = member[i];
+                var clone = template.content.cloneNode(true);
+                var cells = clone.querySelectorAll('td');
+                cells[0].textContent = cat.name;
+                cells[2].textContent = cat.gender;
+                cells[1].textContent = cat.age;
+                template.parentNode.appendChild(clone);
+            }
+        </script>
+    </section>
+
+    <section>
+        <h2>canvas element</h2>
+        <!-- Learn about this code on MDN: https://developer.mozilla.org/ko/docs/Web/HTML/Canvas -->
+
+        <canvas id="canvas" width="320" height="200" class="playable-canvas" style="background:#ddd"></canvas>
+        <div class="playable-buttons">
+            <input id="edit" type="button" value="Edit">
+            <input id="reset" type="button" value="Reset">
+        </div>
+        <textarea id="code" style="width:320px;height:100px;">
+ctx.fillStyle = "red";
+ctx.fillRect(10, 10, 100, 100);
+ctx.fillText("Hello World!",10,150);</textarea>
+        <script>
+            var canvas = document.getElementById("canvas");
+            var ctx = canvas.getContext("2d");
+            var textarea = document.getElementById("code");
+            var reset = document.getElementById("reset");
+            var edit = document.getElementById("edit");
+            var code = textarea.value;
+            function drawCanvas() {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              eval(textarea.value);
+            }
+            reset.addEventListener("click", function() {
+              textarea.value = code;
+              drawCanvas();
+            });
+            edit.addEventListener("click", function() {
+              textarea.focus();
+            })
+            textarea.addEventListener("input", drawCanvas);
+            window.addEventListener("load", drawCanvas);
+        </script>
+    </section>
+</body>
+</html>
