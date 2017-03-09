@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5 new elements</title>
+    <style>
+        *{ box-sizing: border-box; }
+        h1, h2, h3{ margin: 0; }
+        img{
+            max-width: 100%;
+            height: auto;
+            border: 16px solid transparent;
+        }
+        body, div, header, footer, main, section, article, nav, aside, figure, figcaption{
+            position: relative;
+            margin: 16px;
+            border: 1px dotted #666;
+        }
+        body, section, article, nav, aside, .outline {
+            border: 2px solid red;
+            background: rgba(0,0,0,.15);
+        }
+        .outline{ border-color: blue; }
+        body:after,
+        section:after,
+        article:after,
+        nav:after,
+        aside:after,
+        .outline:after{
+            content: "Outline(section)";
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 4px 8px;
+            background: red;
+            color: #fff;
+        }
+        .outline:after{
+            content: "Outline(heading)";
+            background: blue;
+        }
+        .outline-tree{
+            position: fixed;
+            background: #fff;
+            padding: 16px;
+            top: 50px;
+            right: 260px;
+        }
+        .outline-tree ul{ padding-left: 24px; }
+    </style>
+</head>
+<body class="outline">
+    &lt;body&gt;
+    <div class="container">
+        &lt;div class="container"&gt;
+        <header>
+            &lt;header&gt;
+            <h1>HTML5 시멘틱 마크업(h1)</h1>
+            <nav class="gnb"><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
+                &lt;nav&gt;
+                <h2>글로벌 메뉴(h2)</h2>
+                <ul>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">...</a></li>
+                </ul>
+                &lt;/nav&gt;
+            </nav>
+            &lt;/header&gt;
+        </header>
+
+        <div class="body">
+            &lt;div class="body"&gt;
+
+            <main><!-- 그룹핑 요소: 문서의 콘텐츠 영역. 한 번만 사용 가능. 페이지마다 반복하지 않는 요소만 포함. 개요를 형성하지 않으므로 제목은 필수 아님. -->
+                &lt;main&gt;
+                <article><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
+                    &lt;article&gt;
+                    <h2>본문 콘텐츠(h2)</h2>
+                    <section><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
+                        &lt;section&gt;
+                        <h3>섹션(h3)</h3>
+                        <p>...</p>
+                        <div class="outline">
+                            <h4>섹션(h4)</h4>
+                            <p>...</p>
+                            <div class="outline">
+                                <h5>섹션(h5)</h5>
+                                <p>...</p>
+                            </div>
+                        </div>
+                        &lt;/section&gt;
+                    </section>
+                    <section><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
+                        &lt;section&gt;
+                        <h3>섹션(h3)</h3>
+                        <figure>
+                            &lt;figure&gt;<br>
+                            <img src="https://goo.gl/5pMjku">
+                            <figcaption>&lt;figcaption&gt;인제 스피디움 서킷에서 모터사이클 주행중인 정찬명.&lt;/figcaption&gt;</figcaption>
+                            &lt;/figure&gt;
+                        </figure>
+                        &lt;/section&gt;
+                    </section>
+                    &lt;/article&gt;
+                </article>
+                &lt;/main&gt;
+            </main>
+
+            <nav class="lnb"><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
+                &lt;nav&gt;
+                <h2>로컬 메뉴(h2)</h2>
+                <ul>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">...</a></li>
+                </ul>
+                &lt;/nav&gt;
+            </nav>
+
+            <aside><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
+                &lt;aside&gt;
+                <h2>바로가기 / 배너(h2)</h2>
+                <ul>
+                    <li><a href="#">...</a></li>
+                    <li><a href="#">...</a></li>
+                </ul>
+                &lt;/aside&gt;
+            </aside>
+            &lt;/div&gt;
+        </div>
+
+        <footer>
+            &lt;footer&gt;
+            <p>Copyright &copy; ...</p>
+            &lt;/footer&gt;
+        </footer>
+        &lt;/div&gt;
+    </div>
+    &lt;/body&gt;
+    <div class="outline-tree">
+        <h2>Document outline.</h2>
+        <ul>
+            <li>HTML5 시멘틱 마크업(h1)</li>
+            <ul>
+                <li>글로벌 메뉴(h2)</li>
+                <li>본문 콘텐츠(h2)
+                    <ul>
+                        <li>섹션(h3)
+                            <ul>
+                                <li>섹션(h4)</li>
+                                <ul>
+                                    <li>섹션(h5)</li>
+                                </ul>
+                            </ul>
+                        </li>
+                        <li>섹션(h3)</li>
+                    </ul>
+                </li>
+                <li>로컬 메뉴(h2)</li>
+                <li>바로가기 / 배너(h2)</li>
+            </ul>
+        </ul>
+    </div>
+</body>
+</html>
