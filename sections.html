@@ -5,7 +5,7 @@
     <title>HTML5 outline</title>
     <style>
         *{ box-sizing: border-box; }
-        h1, h2, h3, h4, h5, p{
+        h1, h2, h3, h4, h5, h6, p{
             margin: 0;
             text-indent: 16px;
         }
@@ -23,7 +23,7 @@
             margin-top: 0;
             margin-bottom: 0;
         }
-        div, main, header, footer{ border: 1px dotted #999; }
+        div, main, header, footer, .broken-outline{ border: 1px dotted #999; }
         body, blockquote, figure, fieldset, td, section, article, nav, aside, .implied-section{ border: 2px solid; }
         section, article, nav, aside, .implied-section{ background: rgba(0,0,0,.15); }
         body, blockquote, figure, fieldset, td{ background: #fff; }
@@ -60,14 +60,11 @@
             content: "Outline(sectioning content)";
             background: red;
         }
+        .broken-outline:after{ content: none; }
         .implied-section{ border: 2px solid blue; }
         .implied-section:after{
             content: "Outline(implied section)";
             background: blue;
-        }
-        .hover{
-            background: #000;
-            color: #fff;
         }
         .outline-tree{
             position: fixed;
@@ -79,7 +76,7 @@
             left: 0;
             width: 280px;
             max-width: 100%;
-            height: 270px;
+            height: 350px;
             margin: auto;
         }
         .outline-tree>h2{ text-indent: 0; }
@@ -114,8 +111,8 @@
                     &lt;article&gt;
                     <h2>본문 콘텐츠(h2)</h2>
                     <section><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
-                        &lt;section&gt;
-                        <h3>섹션(h3)</h3>
+                        &lt;section&gt;<br>
+                        <h3>명시적 섹션(h3)</h3>
                         <p>...</p>
                         <div class="implied-section">
                             <h4>암시적 섹션(h4)</h4>
@@ -123,13 +120,37 @@
                             <div class="implied-section">
                                 <h5>암시적 섹션(h5)</h5>
                                 <p>...</p>
+                                <div class="implied-section">
+                                    <h6>암시적 섹션(h6)</h6>
+                                    <p>...</p>
+                                </div>
                             </div>
+                        </div>
+                        &lt;/section&gt;
+                    </section>
+                    <section class="broken-outline"><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
+                        &lt;section&gt;<br>
+                        <div class="implied-section">
+                            <h3>암시적 섹션(h3)</h3>
+                            <p>...</p>
+                            <div class="implied-section">
+                                <h4>암시적 섹션(h4)</h4>
+                                <p>...</p>
+                                <div class="implied-section">
+                                    <h5>암시적 섹션(h5)</h5>
+                                    <p>...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="implied-section">
+                            <h1>암시적 섹션(h1)</h1>
+                            <p>...</p>
                         </div>
                         &lt;/section&gt;
                     </section>
                     <section><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
                         &lt;section&gt;
-                        <h3>섹션(h3)</h3>
+                        <h3>명시적 섹션(h3)</h3>
                         <figure>
                             &lt;figure&gt;<br>
                             <h1>세셔닝 루트(h1)</h1>
@@ -183,7 +204,18 @@
                 <li>글로벌 메뉴(h2)</li>
                 <li>본문 콘텐츠(h2)
                     <ol>
-                        <li>섹션(h3)
+                        <li>명시적 섹션(h3)
+                            <ol>
+                                <li>암시적 섹션(h4)</li>
+                                <ol>
+                                    <li>암시적 섹션(h5)</li>
+                                    <ol>
+                                        <li>암시적 섹션(h6)</li>
+                                    </ol>
+                                </ol>
+                            </ol>
+                        </li>
+                        <li>암시적 섹션(h3)
                             <ol>
                                 <li>암시적 섹션(h4)</li>
                                 <ol>
@@ -191,7 +223,8 @@
                                 </ol>
                             </ol>
                         </li>
-                        <li>섹션(h3)</li>
+                        <li>암시적 섹션(h1)</li>
+                        <li>명시적 섹션(h3)</li>
                     </ol>
                 </li>
                 <li>로컬 메뉴(h2)</li>
