@@ -2,54 +2,91 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>HTML5 new elements</title>
+    <title>HTML5 outline</title>
     <style>
         *{ box-sizing: border-box; }
-        h1, h2, h3{ margin: 0; }
+        h1, h2, h3, h4, h5, p{
+            margin: 0;
+            text-indent: 16px;
+        }
         img{
             max-width: 100%;
             height: auto;
-            border: 16px solid transparent;
+            padding: 0 16px;
         }
-        body, div, header, footer, main, section, article, nav, aside, figure, figcaption{
+        body{ margin: 0; }
+        div, header, footer, main, blockquote, figure, figcaption, fieldset, td, section, article, nav, aside{
             position: relative;
             margin: 16px;
-            border: 1px dotted #666;
         }
-        body, section, article, nav, aside, .outline {
-            border: 2px solid red;
-            background: rgba(0,0,0,.15);
+        figcaption{
+            margin-top: 0;
+            margin-bottom: 0;
         }
-        .outline{ border-color: blue; }
+        div, main, header, footer{ border: 1px dotted #999; }
+        body, blockquote, figure, fieldset, td, section, article, nav, aside, .implied-section{ border: 2px solid; }
+        section, article, nav, aside, .implied-section{ background: rgba(0,0,0,.15); }
+        body, blockquote, figure, fieldset, td{ background: #fff; }
         body:after,
+        blockquote:after,
+        figure:after,
+        fieldset:after,
+        td:after,
         section:after,
         article:after,
         nav:after,
         aside:after,
-        .outline:after{
-            content: "Outline(section)";
+        .implied-section:after{
             position: absolute;
             top: 0;
             right: 0;
             padding: 4px 8px;
-            background: red;
             color: #fff;
         }
-        .outline:after{
-            content: "Outline(heading)";
+        body, blockquote, figure, fieldset, td{ border-color: #666; }
+        section, article, nav, aside{ border-color: red; }
+        body:after,
+        blockquote:after,
+        figure:after,
+        fieldset:after,
+        td:after{
+            content: "Outline(sectioning root)";
+            background: #666;
+        }
+        section:after,
+        article:after,
+        nav:after,
+        aside:after{
+            content: "Outline(sectioning content)";
+            background: red;
+        }
+        .implied-section{ border: 2px solid blue; }
+        .implied-section:after{
+            content: "Outline(implied section)";
             background: blue;
+        }
+        .hover{
+            background: #000;
+            color: #fff;
         }
         .outline-tree{
             position: fixed;
-            background: #fff;
+            background: rgba(255,255,255,.8);
             padding: 16px;
-            top: 50px;
-            right: 260px;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            width: 280px;
+            max-width: 100%;
+            height: 270px;
+            margin: auto;
         }
-        .outline-tree ul{ padding-left: 24px; }
+        .outline-tree>h2{ text-indent: 0; }
+        .outline-tree ol{ padding-left: 24px; }
     </style>
 </head>
-<body class="outline">
+<body>
     &lt;body&gt;
     <div class="container">
         &lt;div class="container"&gt;
@@ -80,11 +117,11 @@
                         &lt;section&gt;
                         <h3>섹션(h3)</h3>
                         <p>...</p>
-                        <div class="outline">
-                            <h4>섹션(h4)</h4>
+                        <div class="implied-section">
+                            <h4>암시적 섹션(h4)</h4>
                             <p>...</p>
-                            <div class="outline">
-                                <h5>섹션(h5)</h5>
+                            <div class="implied-section">
+                                <h5>암시적 섹션(h5)</h5>
                                 <p>...</p>
                             </div>
                         </div>
@@ -95,8 +132,9 @@
                         <h3>섹션(h3)</h3>
                         <figure>
                             &lt;figure&gt;<br>
+                            <h1>세셔닝 루트(h1)</h1>
                             <img src="https://goo.gl/5pMjku">
-                            <figcaption>&lt;figcaption&gt;인제 스피디움 서킷에서 모터사이클 주행중인 정찬명.&lt;/figcaption&gt;</figcaption>
+                            <figcaption>&lt;figcaption&gt;모터사이클 주행중인 정찬명.&lt;/figcaption&gt;</figcaption>
                             &lt;/figure&gt;
                         </figure>
                         &lt;/section&gt;
@@ -118,7 +156,7 @@
 
             <aside><!-- 섹셔닝 요소: 개요(outline)를 형성하는 마크업. 헤딩을 포함한다. -->
                 &lt;aside&gt;
-                <h2>바로가기 / 배너(h2)</h2>
+                <h2>사이드바(h2)</h2>
                 <ul>
                     <li><a href="#">...</a></li>
                     <li><a href="#">...</a></li>
@@ -136,29 +174,31 @@
         &lt;/div&gt;
     </div>
     &lt;/body&gt;
+
     <div class="outline-tree">
         <h2>Document outline.</h2>
-        <ul>
+        <ol>
             <li>HTML5 시멘틱 마크업(h1)</li>
-            <ul>
+            <ol>
                 <li>글로벌 메뉴(h2)</li>
                 <li>본문 콘텐츠(h2)
-                    <ul>
+                    <ol>
                         <li>섹션(h3)
-                            <ul>
-                                <li>섹션(h4)</li>
-                                <ul>
-                                    <li>섹션(h5)</li>
-                                </ul>
-                            </ul>
+                            <ol>
+                                <li>암시적 섹션(h4)</li>
+                                <ol>
+                                    <li>암시적 섹션(h5)</li>
+                                </ol>
+                            </ol>
                         </li>
                         <li>섹션(h3)</li>
-                    </ul>
+                    </ol>
                 </li>
                 <li>로컬 메뉴(h2)</li>
-                <li>바로가기 / 배너(h2)</li>
-            </ul>
-        </ul>
+                <li>사이드바(h2)</li>
+            </ol>
+        </ol>
     </div>
+
 </body>
 </html>
