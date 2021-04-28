@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Picture element example</title>
+    <style>
+        html,
+        body { height: 100%; }
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-flow: wrap;
+        }
+        figure {
+            position: relative;
+            margin: 0;
+            flex-basis: 50%;
+        }
+        figcaption {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px;
+            font-weight: bold;
+            text-shadow: -1px -1px 0 #fff, 1px 1px 0 #fff;
+        }
+        picture,
+        img {
+            display: block;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <figure>
+        <figcaption>jpg<sup>(201KB)</sup> &lt;img&gt; element</figcaption>
+        <img src="img/example.jpg">
+    </figure>
+    <figure>
+        <figcaption>webp<sup>(93KB)</sup> &lt;img&gt; element</figcaption>
+        <img src="img/example.webp">
+    </figure>
+    <figure>
+        <figcaption>avif<sup>(45KB)</sup> &lt;img&gt; element</figcaption>
+        <img src="img/example.webp">
+    </figure>
+    <figure>
+        <figcaption>&lt;picture&gt; element [avif|webp|jpg]</figcaption>
+        <picture>
+            <source srcset="img/example.avif" type="image/avif">
+            <source srcset="img/example.webp" type="image/webp">
+            <img src="img/example.jpg" alt>
+        </picture>
+    </figure>
+</body>
+</html>
