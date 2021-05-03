@@ -10,7 +10,12 @@
             display: flex;
             justify-content: center;
             align-content: center;
-            flex-flow: wrap;
+        }
+        @media (min-width:641px) {
+            body { flex-flow: wrap; }
+        }
+        @media (max-width:640px) {
+            body { flex-flow: column; }
         }
         figure {
             position: relative;
